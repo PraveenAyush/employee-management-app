@@ -14,7 +14,7 @@ const newEmployee = async (req, res) => {
         await employee.save()
         res.status(201).json(employee)
     } catch (error) {
-        res.status(400).json({ message: error.message })
+        res.status(500).json({ message: error.message })
     }
 }
 
