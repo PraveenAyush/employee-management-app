@@ -11,7 +11,11 @@ import Departments from './pages/Departments'
 
 function App() {
   return (
-    <Box>
+    <Box sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: '100vh',
+    }}>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
