@@ -5,16 +5,12 @@ const departmentController = require('../controllers/department-controller')
 
 router.get('/', departmentController.getDepartments)
 
-router.route('/:name')
-    .get(departmentController.getDepartmentId)
-    .put(departmentController.updateDepartmentName)
-
-// router.get('/:name', departmentController.getDepartmentId)
+router.get('/:name', departmentController.getDepartmentId)
 
 router.post('/new', departmentController.createDepartment)
 
-// router.put('/:name', departmentController.updateDepartmentName)
-
-router.delete('/:id', departmentController.deleteDepartment)
+router.route('/:id')
+    .delete(departmentController.deleteDepartment)
+    .put(departmentController.updateDepartmentName)
 
 module.exports = router

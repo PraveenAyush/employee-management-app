@@ -39,7 +39,7 @@ const getDepartmentId = async (req, res) => {
 
 const updateDepartmentName = async (req, res) => {
     try {
-        const department = await Department.findOne({name: req.params.name})
+        const department = await Department.findById(req.params.id)
         department.name = req.body.name
         await department.save()
         res.json(department)
