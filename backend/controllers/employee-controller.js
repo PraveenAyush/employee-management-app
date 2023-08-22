@@ -39,17 +39,18 @@ const findEmployee = async (req, res) => {
 }
 
 // Get all employees from one department
-const findEmployeesByDepartment = async (req, res) => {
-    try {
-        const employees = await Employee.find({ department_id: req.params.department_id })
-        const employeeNames = employees.map(employee => {
-            return { name: employee.name, surname: employee.surname }
-        })
-        res.json(employeeNames)
-    } catch (error) {
-        res.status(404).json({ message: error.message })
-    }
-}
+// const findEmployeesByDepartment = async (req, res) => {
+//     if (!req.query.departmentId) {
+//         res.status(400).json({ message: 'Missing departmentId' })
+//     } else {
+//         try {
+//             const employees = await Employee.find({ department_id: req.query.departmentId })
+//             res.json(employees)
+//         } catch (error) {
+//             res.status(404).json({ message: error.message })
+//         }
+//     }
+// }
 
 // Update one employee
 const updateEmployee = async (req, res) => {
@@ -85,7 +86,6 @@ module.exports = {
     newEmployee,
     getAllEmployees,
     findEmployee,
-    findEmployeesByDepartment,
     updateEmployee,
     deleteEmployee
 }
