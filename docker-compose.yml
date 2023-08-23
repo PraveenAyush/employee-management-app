@@ -1,0 +1,33 @@
+version: '3.7'
+services:
+  react-app:
+    build: ./frontend
+    image: react-app
+    stdin_open: true
+    ports:
+      - 3000:3000
+    networks:
+      - management-app
+  api-server:
+    build: ./backend
+    image: api-server
+    ports:
+      - 8080:8080
+    networks:
+      - management-app
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    networks:
+      - management-app
+    volumes:
+      - mongo-data:/data/db
+networks:
+  management-app:
+    driver: bridge
+volumes:
+  mongo-data:
+    driver: local
